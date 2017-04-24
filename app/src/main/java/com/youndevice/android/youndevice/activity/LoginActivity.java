@@ -14,6 +14,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -37,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.password)
     EditText mPassword;
 
-    Activity activity;
+    LoginActivity activity;
 
     private ProgressDialog authIndicator;
 
@@ -72,6 +74,9 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<AuthResponse>() {
                          @Override
                          public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
+                             if (authIndicator.isShowing()){
+                                 authIndicator.dismiss();
+                             }
                              if (response.isSuccessful()) {
                                  User user = response.body().getData();
                                  Preferences.of(getApplicationContext()).firstName().set(user.getFirstName());
@@ -84,16 +89,28 @@ public class LoginActivity extends AppCompatActivity {
 
                                  Log.d("Success", "Success");
                              } else {
-                                 Log.d("Success", "But no login");
+                                 activity.showError(R.string.error_login_credential);
                              }
                          }
 
                          @Override
                          public void onFailure(Call<AuthResponse> call, Throwable t) {
-                             // something went completely south (like no internet connection)
-                             Log.d("Error", t.getMessage());
+                             if (authIndicator.isShowing()){
+                                 authIndicator.dismiss();
+                             }
+                             activity.showError(R.string.error_login_internet);
                          }
                      });
+
+        authIndicator=new ProgressDialog(this);
+        authIndicator.setCancelable(false);
+        authIndicator.setMessage("logging in...");
+        authIndicator.show();
+
+    }
+
+    private void showError(@StringRes int errorMessage) {
+        Snackbar.make(findViewById(android.R.id.content), errorMessage, Snackbar.LENGTH_LONG).show();
 
     }
 
