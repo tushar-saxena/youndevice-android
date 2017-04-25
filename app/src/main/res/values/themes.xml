@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <style name="AppTheme.SettingsTheme" parent="@style/AppTheme">
+    <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+  </style>
+
+  <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+
+    <item name="windowActionModeOverlay">true</item>
+    <item name="actionModeBackground">@color/colorPrimary</item>
+
+    <item name="android:windowBackground">@color/background_window</item>
+  </style>
+
+  <style name="AppTheme.Drawer" parent="AppTheme">
+  </style>
+
+  <style name="AppTheme.NavigationView" parent="AppTheme">
+    <item name="textAppearanceListItem">@style/AppTheme.NavigationView.Item</item>
+  </style>
+
+  <style name="AppTheme.NavigationView.Item">
+    <item name="android:fontFamily">sans-serif</item>
+    <item name="android:textSize">@dimen/text_secondary</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+</resources>

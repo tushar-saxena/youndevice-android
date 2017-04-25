@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <include
+    layout="@layout/layout_toolbar"/>
+
+  <FrameLayout
+    android:foreground="?android:windowContentOverlay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+      android:id="@+id/layout_container"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <android.support.design.widget.FloatingActionButton
+          android:id="@+id/action_button"
+          android:layout_width="60dp"
+          android:layout_height="60dp"
+          android:layout_gravity="bottom|right"
+          android:layout_margin="16dp"
+          android:visibility="invisible" />
+
+    </FrameLayout>
+
+  </FrameLayout>
+
+</LinearLayout>

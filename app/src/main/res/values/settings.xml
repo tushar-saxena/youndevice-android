@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <string name="settings_key_account_sign_out" translatable="false">sign_out</string>
+
+</resources>
