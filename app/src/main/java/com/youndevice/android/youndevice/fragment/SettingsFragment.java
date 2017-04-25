@@ -34,7 +34,7 @@ import butterknife.ButterKnife;
  */
 public final class SettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceClickListener {
     @BindString(R.string.settings_key_account_sign_out)
-    String accountKey;
+    String mAccountKey;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
@@ -59,12 +59,12 @@ public final class SettingsFragment extends PreferenceFragmentCompat implements 
     }
 
     private void setUpListeners() {
-        findPreference(accountKey).setOnPreferenceClickListener(this);
+        findPreference(mAccountKey).setOnPreferenceClickListener(this);
     }
 
     @Override
     public boolean onPreferenceClick(Preference preference) {
-        if (accountKey.equals(preference.getKey())) {
+        if (mAccountKey.equals(preference.getKey())) {
             tearDownAuthorization();
         }
 
@@ -78,7 +78,7 @@ public final class SettingsFragment extends PreferenceFragmentCompat implements 
         Preferences.of(activity).lastName().delete();
         Preferences.of(activity).token().delete();
         Preferences.of(activity).authenticated().delete();
-
+        Preferences.of(activity).email().delete();
         activity.setResult(Activity.RESULT_OK);
         activity.finish();
     }
@@ -87,10 +87,6 @@ public final class SettingsFragment extends PreferenceFragmentCompat implements 
     public void onDestroyView() {
         super.onDestroyView();
 
-        tearDownBindings();
     }
 
-    private void tearDownBindings() {
-        //ButterKnife.unbind(this);
-    }
 }

@@ -29,9 +29,8 @@
         android:layout_height="wrap_content">
 
         <TextView
-          android:id="@+id/text_host"
+          android:id="@+id/text_user_name"
           style="@style/AppTheme.NavigationView.Item"
-          android:text="@string/application_name"
           android:textColor="@android:color/white"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"/>
@@ -41,7 +40,7 @@
           android:layout_height="4dp"/>
 
         <TextView
-          android:id="@+id/text_persona"
+          android:id="@+id/text_email"
           android:textColor="@android:color/white"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"/>

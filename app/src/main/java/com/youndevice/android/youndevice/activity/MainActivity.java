@@ -6,9 +6,7 @@ import com.youndevice.android.youndevice.util.Preferences;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -19,6 +17,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,22 +27,26 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    Toolbar mToolbar;
 
     @BindView(R.id.drawer)
-    DrawerLayout drawer;
+    DrawerLayout mDrawer;
 
     @BindView(R.id.navigation)
-    NavigationView navigation;
+    NavigationView mNavigation;
 
     @BindView(R.id.tabs)
-    TabLayout tabLayout;
+    TabLayout mTabLayout;
 
     @BindView(R.id.viewpager)
-    ViewPager viewPager;
+    ViewPager mViewPager;
 
     @BindView(R.id.title)
-    TextView title;
+    TextView mTitle;
+
+    TextView mName;
+
+    TextView mEmail;
 
     @IdRes
     int currentNavigationId;
@@ -56,21 +59,32 @@ public class MainActivity extends AppCompatActivity
         // -- Bind view
         ButterKnife.bind(this);
 
+        View headerView = mNavigation.getHeaderView(0);
+        mName = ButterKnife.findById(headerView, R.id.text_user_name);
+        mEmail = ButterKnife.findById(headerView, R.id.text_email);
+
         // -- Toolbar
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mToolbar);
 
         // -- Navigation
-        navigation.setNavigationItemSelectedListener(this);
+        mNavigation.setNavigationItemSelectedListener(this);
 
 
         if(Preferences.of(getApplicationContext()).authenticated().get() == false) {
             this.finish();
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         } else {
-
+            setupDrawer();
         }
 
+    }
+
+    private void setupDrawer() {
+        String name = Preferences.of(getApplicationContext()).firstName().get()+" "
+                +Preferences.of(getApplicationContext()).lastName().get();
+        mName.setText(name);
+        mEmail.setText(Preferences.of(getApplicationContext()).email().get());
     }
 
     @Override
@@ -107,7 +121,7 @@ public class MainActivity extends AppCompatActivity
 
         currentNavigationId = menuItem.getItemId();
 
-        drawer.closeDrawers();
+        mDrawer.closeDrawers();
 
         return true;
 
@@ -118,17 +132,17 @@ public class MainActivity extends AppCompatActivity
 
     @OnClick(R.id.drawer_menu_icon)
     void openDrawerMenu() {
-        drawer.openDrawer(GravityCompat.START);
+        mDrawer.openDrawer(GravityCompat.START);
     }
 
     private void showNavigation(@IdRes int navigationId) {
-        navigation.getMenu().findItem(navigationId).setChecked(true);
+        mNavigation.getMenu().findItem(navigationId).setChecked(true);
     }
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
+            mDrawer.closeDrawer(GravityCompat.START);
             return;
         }
     }

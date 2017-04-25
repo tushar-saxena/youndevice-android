@@ -83,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                                  Preferences.of(getApplicationContext()).lastName().set(user.getLastName());
                                  Preferences.of(getApplicationContext()).token().set(user.getToken());
                                  Preferences.of(getApplicationContext()).authenticated().set(true);
+                                 Preferences.of(getApplicationContext()).email().set(mUsername.getText().toString());
 
                                  startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                  activity.finish();

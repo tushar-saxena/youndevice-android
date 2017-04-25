@@ -27,6 +27,7 @@ public final class Preferences {
         public static final String BACKEND_LAST_NAME = "lastName";
         public static final String BACKEND_TOKEN = "token";
         public static final String BACKEND_AUTHENTICATED = "authenticated";
+        public static final String BACKEND_EMAIL = "email";
 
     }
 
@@ -59,6 +60,11 @@ public final class Preferences {
     @NonNull
     public StringPreference token() {
         return new StringPreference(serverPreferences, Keys.BACKEND_TOKEN);
+    }
+
+    @NonNull
+    public StringPreference email() {
+        return new StringPreference(serverPreferences, Keys.BACKEND_EMAIL);
     }
 
     @NonNull
