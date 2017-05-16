@@ -15,4 +15,13 @@
   <string name="settings_description_account_sign_out">Remove account and start from scratch.</string>
   <string name="settings_title_account_sign_out">Sign Out</string>
   <string name="title_settings">Settings</string>
+
+  <string name="sign_out_complete">Sign out completed</string>
+  <string name="unknown_sign_in_response">unknown_sign_in_response</string>
+  <string name="unknown_error">unknown_error</string>
+  <string name="no_internet_connection">no_internet_connection</string>
+  <string name="sign_in_cancelled">sign_in_cancelled</string>
+  <string name="sign_in_complete">sign_in_complete</string>
+  <string name="sign_in">sign in</string>
+  <string name="sign_out">sign out</string>
 </resources>

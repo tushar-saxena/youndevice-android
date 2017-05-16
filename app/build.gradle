@@ -11,6 +11,17 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+
+    signingConfigs {
+        debug {
+            storeFile rootProject.file('debug.keystore')
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storePassword 'android'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -24,6 +35,8 @@ dependencies {
 
     compile "com.squareup.retrofit2:retrofit:2.2.0"
     compile 'com.squareup.retrofit2:converter-moshi:2.2.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
     compile "info.metadude.android:typed-preferences:2.0.0"
     compile "com.android.support:appcompat-v7:${supportLibraryVersion}"
     compile "com.android.support:design:${supportLibraryVersion}"
@@ -33,7 +46,10 @@ dependencies {
     compile 'com.google.android.gms:play-services:10.2.0'
     compile 'com.google.android.gms:play-services-location:10.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.firebaseui:firebase-ui-auth:1.2.0'
     compile 'com.jakewharton:butterknife:8.5.1'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }
+
+apply plugin: 'com.google.gms.google-services'

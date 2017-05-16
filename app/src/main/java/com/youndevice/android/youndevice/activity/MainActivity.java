@@ -1,5 +1,7 @@
 package com.youndevice.android.youndevice.activity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 import com.youndevice.android.youndevice.R;
 import com.youndevice.android.youndevice.util.Intents;
 import com.youndevice.android.youndevice.util.Preferences;
@@ -18,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.title)
     TextView mTitle;
 
+    ImageView mProfileImage;
+
     TextView mName;
 
     TextView mEmail;
@@ -60,6 +65,7 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(this);
 
         View headerView = mNavigation.getHeaderView(0);
+        mProfileImage = ButterKnife.findById(headerView, R.id.profile_image);
         mName = ButterKnife.findById(headerView, R.id.text_user_name);
         mEmail = ButterKnife.findById(headerView, R.id.text_email);
 
@@ -71,7 +77,7 @@ public class MainActivity extends AppCompatActivity
         mNavigation.setNavigationItemSelectedListener(this);
 
 
-        if(Preferences.of(getApplicationContext()).authenticated().get() == false) {
+        if(FirebaseAuth.getInstance() == null) {
             this.finish();
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         } else {
@@ -81,9 +87,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setupDrawer() {
-        String name = Preferences.of(getApplicationContext()).firstName().get()+" "
-                +Preferences.of(getApplicationContext()).lastName().get();
-        mName.setText(name);
+        Picasso.with(getApplicationContext())
+                .load(Preferences.of(getApplicationContext()).profile().get()).into(mProfileImage);
+        mName.setText(Preferences.of(getApplicationContext()).name().get());
         mEmail.setText(Preferences.of(getApplicationContext()).email().get());
     }
 

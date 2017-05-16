@@ -23,11 +23,11 @@ public final class Preferences {
         private Keys() {
         }
 
-        public static final String BACKEND_FIRST_NAME = "firstName";
-        public static final String BACKEND_LAST_NAME = "lastName";
+        public static final String BACKEND_NAME = "name";
         public static final String BACKEND_TOKEN = "token";
         public static final String BACKEND_AUTHENTICATED = "authenticated";
         public static final String BACKEND_EMAIL = "email";
+        public static final String BACKEND_PROFILE_PIC = "profile_pic";
 
     }
 
@@ -48,14 +48,10 @@ public final class Preferences {
     }
 
     @NonNull
-    public StringPreference firstName() {
-        return new StringPreference(serverPreferences, Keys.BACKEND_FIRST_NAME);
+    public StringPreference name() {
+        return new StringPreference(serverPreferences, Keys.BACKEND_NAME);
     }
 
-    @NonNull
-    public StringPreference lastName() {
-        return new StringPreference(serverPreferences, Keys.BACKEND_LAST_NAME);
-    }
 
     @NonNull
     public StringPreference token() {
@@ -65,6 +61,11 @@ public final class Preferences {
     @NonNull
     public StringPreference email() {
         return new StringPreference(serverPreferences, Keys.BACKEND_EMAIL);
+    }
+
+    @NonNull
+    public StringPreference profile() {
+        return new StringPreference(serverPreferences, Keys.BACKEND_PROFILE_PIC);
     }
 
     @NonNull

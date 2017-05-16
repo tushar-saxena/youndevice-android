@@ -16,11 +16,15 @@
  */
 package com.youndevice.android.youndevice.fragment;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.youndevice.android.youndevice.R;
 import com.youndevice.android.youndevice.util.Preferences;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.view.View;
@@ -74,8 +78,9 @@ public final class SettingsFragment extends PreferenceFragmentCompat implements 
     private void tearDownAuthorization() {
         Activity activity = getActivity();
 
-        Preferences.of(activity).firstName().delete();
-        Preferences.of(activity).lastName().delete();
+        AuthUI.getInstance().signOut(this.getActivity());
+
+        Preferences.of(activity).name().delete();
         Preferences.of(activity).token().delete();
         Preferences.of(activity).authenticated().delete();
         Preferences.of(activity).email().delete();
