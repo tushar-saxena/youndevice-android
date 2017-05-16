@@ -1,19 +1,22 @@
 package com.youndevice.android.youndevice.service;
 
+import java.util.List;
+
 import com.youndevice.android.youndevice.backend.model.AuthResponse;
 import com.youndevice.android.youndevice.backend.model.Credential;
+import com.youndevice.android.youndevice.backend.model.Device;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
  * Created by anuj on 24/4/17.
  */
 
-public interface LoginService {
+public interface DeviceService {
 
-    @POST("api/v1/login")
-    Call<AuthResponse> login(@Body Credential credential);
-
+    @GET("api/v1/devices")
+    Call<List<Device>> getDevices();
 }

@@ -1,4 +1,4 @@
-package com.youndevice.android.youndevice.backend.Model;
+package com.youndevice.android.youndevice.backend.model;
 
 /**
  * Created by anuj on 24/4/17.

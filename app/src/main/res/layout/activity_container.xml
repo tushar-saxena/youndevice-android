@@ -24,7 +24,7 @@
           android:layout_height="60dp"
           android:layout_gravity="bottom|right"
           android:layout_margin="16dp"
-          android:visibility="invisible" />
+          android:visibility="visible" />
 
     </FrameLayout>
 

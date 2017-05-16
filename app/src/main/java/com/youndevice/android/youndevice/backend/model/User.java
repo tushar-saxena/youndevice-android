@@ -1,4 +1,4 @@
-package com.youndevice.android.youndevice.backend.Model;
+package com.youndevice.android.youndevice.backend.model;
 
 import com.squareup.moshi.Json;
 

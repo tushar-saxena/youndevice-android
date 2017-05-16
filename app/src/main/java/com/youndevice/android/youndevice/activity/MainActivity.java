@@ -3,6 +3,8 @@ package com.youndevice.android.youndevice.activity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 import com.youndevice.android.youndevice.R;
+import com.youndevice.android.youndevice.adapter.ViewPagerAdapter;
+import com.youndevice.android.youndevice.fragment.DevicesFragment;
 import com.youndevice.android.youndevice.util.Intents;
 import com.youndevice.android.youndevice.util.Preferences;
 
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.title)
     TextView mTitle;
 
+    ViewPagerAdapter mAdapter;
+
     ImageView mProfileImage;
 
     TextView mName;
@@ -76,6 +80,12 @@ public class MainActivity extends AppCompatActivity
         // -- Navigation
         mNavigation.setNavigationItemSelectedListener(this);
 
+        // -- ViewPager && TabLayout
+
+        mAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(mAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);
+
 
         if(FirebaseAuth.getInstance() == null) {
             this.finish();
@@ -83,6 +93,17 @@ public class MainActivity extends AppCompatActivity
         } else {
             setupDrawer();
         }
+
+        showHome();
+
+    }
+
+    private void showHome() {
+        mTitle.setText(R.string.title_home);
+        mAdapter.reset();
+
+        mAdapter.addFragment(new DevicesFragment(), "Devices");
+        mAdapter.notifyDataSetChanged();
 
     }
 
@@ -113,15 +134,16 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
+            case R.id.menu_home:
+                showHome();
+                break;
+
             case R.id.menu_settings:
-                Log.d("Crater", "Inside");
                 Intent settingsIntent = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivityForResult(settingsIntent, Intents.Requests.DEAUTHORIZATION);
                 break;
 
             default:
-
-                Log.d("Crater", "Outside");
                 break;
         }
 
@@ -150,6 +172,10 @@ public class MainActivity extends AppCompatActivity
         if (mDrawer.isDrawerOpen(GravityCompat.START)) {
             mDrawer.closeDrawer(GravityCompat.START);
             return;
+        }
+
+        else{
+            super.onBackPressed();
         }
     }
 }

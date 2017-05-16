@@ -7,14 +7,9 @@
       android:checkableBehavior="single">
 
     <item
-        android:id="@+id/menu_sample1"
-        android:icon="@mipmap/ic_launcher"
-        android:title="@string/menu_sample"/>
-
-    <item
-        android:id="@+id/menu_sample2"
-        android:icon="@mipmap/ic_launcher"
-        android:title="@string/menu_sample"/>
+        android:id="@+id/menu_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/menu_home"/>
 
   </group>
 

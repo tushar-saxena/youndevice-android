@@ -24,4 +24,20 @@
   <string name="sign_in_complete">sign_in_complete</string>
   <string name="sign_in">sign in</string>
   <string name="sign_out">sign out</string>
+  <string name="button_retry">Retry</string>
+  <string name="message_general">Nothing to show here.</string>
+  <string name="message_empty">Nothing to show here.</string>
+  <string name="message_empty_tip">Add more of youndevice</string>
+  <string name="device_on">Device is turned On</string>
+  <string name="device_off">Device is turned Off</string>
+  <string name="search">Search</string>
+  <string name="title_home">Home</string>
+  <string name="menu_home">Home</string>
+  <string name="device_name">Device name</string>
+  <string name="device_id">Device ID</string>
+  <string name="button_update_device">Update Device</string>
+  <string name="button_add_device">Add Device</string>
+
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -14,23 +14,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.youndevice.android.youndevice.util;
+package com.youndevice.android.youndevice.backend.model;
 
-public final class Intents {
-    private Intents() {
+public class Device {
+
+    private String id;
+
+    private String description;
+
+    private boolean enabled;
+
+    public String getId() {
+        return id;
     }
 
-    public static final class Requests {
-        private Requests() {
-        }
-
-        public static final int AUTHORIZATION = 42;
-        public static final int DEAUTHORIZATION = 24;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public static final class Extras {
-
-
-        public static final String DEVICE = "DEVICE";
+    public String getDescription() {
+        return description;
     }
+
+    public boolean getEnableStatus(){
+        return enabled;
+    }
+
+    public void setEnabledStatus(boolean enabled) {
+        this.enabled=enabled;
+    }
+
 }
