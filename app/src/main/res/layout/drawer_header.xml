@@ -15,6 +15,14 @@
     android:layout_width="match_parent"
     android:layout_height="168dp">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_marginTop="20dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="top"/>
+
     <LinearLayout
       android:orientation="horizontal"
       android:gravity="center_vertical"
@@ -47,30 +55,7 @@
 
       </LinearLayout>
 
-      <ImageView
-        android:id="@+id/image_personas_action"
-        app:srcCompat="@drawable/ic_expand"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
     </LinearLayout>
-
-  </FrameLayout>
-
-  <FrameLayout
-    android:visibility="gone"
-    android:id="@+id/layout_personas"
-    android:background="@color/background_context"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <ListView
-      android:id="@+id/list_personas"
-      android:divider="@null"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"/>
 
   </FrameLayout>
 
